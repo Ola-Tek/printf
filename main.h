@@ -8,8 +8,8 @@
 
 typedef struct ops
 {
-    char specifier;
-    int (*f)(va_list glist);
+	char specifier;
+	int (*f)(va_list glist);
 } op_t;
 
 int _printf(const char *format, ...);
