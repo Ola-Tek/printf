@@ -1,0 +1,36 @@
+#include "main.h"
+/**
+ *
+ * @format: input character, format string
+ * Return: number of characters
+ */
+int _printf(const char *format, ...)
+{
+	int i, num_char = 0;
+
+	va_list args;
+
+	va_start(args, format);
+
+	for (i = 0; format[i] != '\0'; i++)
+	{
+		if (format[i] != '%')
+		{
+			write(1, &format[i], 1);
+		}
+		else if (format[i + 1] == 'd' || format[i + 1 == 'i'])
+		{
+		int num = va_arg(args, int);
+
+		char num_str[12]; /* a buffer that stores the corrected string */
+
+		int digits = snprintf(num_str, sizeof(num_str), "%d", num);
+
+		write(1, num_str, digits);
+		num_char += digits;
+		}
+		num_char++;
+	}
+	va_end(args);
+	return (num_char);
+}
