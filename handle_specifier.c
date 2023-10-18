@@ -12,6 +12,8 @@ int handle_specifier(char c, va_list list)
 	op_t ops[] = {
 		{'c', pchar},
 		{'s', pstr},
+		{'d', pdi},
+		{'i', pdi}, 
 		{'\0', NULL},
 	};
 
@@ -22,8 +24,12 @@ int handle_specifier(char c, va_list list)
 			return (pchar(list));
 		}
 		else if (c == 's')
-		{;
+		{
 			return (pstr(list));
+		}
+		else if (c == 'd' || c == 'i')
+		{
+			return (pdi(list));
 		}
 	}
 	return (0);

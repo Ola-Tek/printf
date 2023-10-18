@@ -29,5 +29,7 @@ int _printf(const char *format, ...);
 int pchar(va_list list);
 int pstr(va_list list);
 int handle_specifier(char c, va_list list);
+int pdi(va_list list);
+int int_length;
 
 #endif
