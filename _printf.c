@@ -8,8 +8,6 @@ int _printf(const char *format, ...)
 {
 	int i, num_char = 0, printed_char = 0;
 
-	char c __attribute__((unused));
-
 	va_list args;
 
 	if (format == NULL)
@@ -26,9 +24,15 @@ int _printf(const char *format, ...)
 		else
 		{
 			i++;
-			c = format[i];
-			printed_char = handle_specifier(format[i], args);
-			num_char += printed_char;
+			if (format[i] == '%')
+			{
+				num_char += write(1, &format[i], 1);
+			}
+			else
+			{
+				printed_char = handle_specifier(format[i], args);
+				num_char += printed_char;
+			}
 		}
 	}
 	va_end(args);
