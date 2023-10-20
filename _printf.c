@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				printed_char = handle_specifier(format[i], args);
+				printed_char = handle_specifier(&format[i], args);
 				num_char += printed_char;
 			}
 		}

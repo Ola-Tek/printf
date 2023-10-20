@@ -1,12 +1,12 @@
 #include "main.h"
 /**
  * handle_specifier - calls function associated with specifier
- * @c: specifier
+ * @str: pointer to format string
  * @list: variadic list
  *
  * Return: number of characters printed
 */
-int handle_specifier(char c, va_list list)
+int handle_specifier(const char *str, va_list list)
 {
 	int i;
 	op_t ops[] = {
@@ -17,14 +17,14 @@ int handle_specifier(char c, va_list list)
 
 	for (i = 0; ops[i].specifier != '\0'; i++)
 	{
-		if (c == 'c')
+		if (ops[i].specifier == *str)
 		{
-			return (pchar(list));
-		}
-		else if (c == 's')
-		{;
-			return (pstr(list));
+			return (ops[i].f(list));
 		}
 	}
-	return (0);
+	str--;
+	write(1, str, 1);
+	str++;
+	write(1, str, 1);
+	return (2);
 }
